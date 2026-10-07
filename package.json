@@ -37,7 +37,7 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "vite": "^7.3.0",
-    "vitest": "^3.2.4"
+    "vitest": "^5.0.3"
   },
   "lint-staged": {
     "*.{js,jsx,css,md}": "prettier --cache --write --experimental-cli"
