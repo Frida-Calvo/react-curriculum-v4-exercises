@@ -13,8 +13,8 @@ export default function BugMutatedState() {
   let [count, setCount] = useState(0);
 
   function handleAdd() {
-    count++;
-    setCount(count);
+    // count++;
+    setCount(count + 1);
   }
 
   return (
@@ -26,4 +26,4 @@ export default function BugMutatedState() {
 }
 
 // Explanation:
-// (Write your explanation here)
+// States in React should be immutable, meaning that React expects a state to be changed only through a setter function, not changed directly. By having count++ before setCount ran, it seemed to work ok, but that pattern of having the value be changed directly before React's setter function even reads the value, defeats the purpose of the hook to update the UI.

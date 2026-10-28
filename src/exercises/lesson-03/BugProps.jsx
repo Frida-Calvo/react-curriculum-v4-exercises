@@ -11,12 +11,15 @@
 
   Use the commented "Explanation" section at the bottom of this lesson's components.
 */
-
+import { useState } from 'react';
 export default function BugProps({ name = 'friend' }) {
-  let message = 'Hello, ' + name;
+  let [message, setMessage] = useState(`Hello, ${name}`);
 
   function handleChange() {
-    message = 'Hi, ' + name + '!';
+    // setMessage('Hi, ' + name + '!');
+    setMessage((prev) =>
+      prev.includes('Hello') ? `Hi, ${name}` : `Hello, ${name}`
+    );
   }
 
   return (
@@ -28,4 +31,4 @@ export default function BugProps({ name = 'friend' }) {
 }
 
 // Explanation:
-// (Write your explanation here)
+// Initially, the message was just a local variable that was being changed, but React needs to use states so it can re-render the UI and so it was not being tracked. So the variable "message" had to instead become a state, which I initialized with the original starting message using the name prop. I then used the setter function to change the string value of the state, triggering a state update that then tells React to re-render the message. I wrote my code with a ternary expression within the handleChange() using a functional updater function so that the user can toggle between messages as well.
